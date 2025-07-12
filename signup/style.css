@@ -1,0 +1,162 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url("../images/login-page-bg.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+.signup-container {
+    background: #fff;
+    width: 500px;
+    height: 570px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+}
+
+.signup-container h2 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #444;
+    font-size: 15px;
+}
+
+.phone-input-group {
+    display: flex;
+    align-items: center;
+}
+
+.phone-prefix {
+    padding: 10px 12px;
+    background: #f0f0f0;
+    border: 1px solid #ccd6df;
+    border-radius: 4px 0 0 4px;
+    font-size: 15px;
+    color: #555;
+    border-right: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+    width: 100%;
+    padding: 10px 40px 10px 12px;
+    border: 1px solid #ccd6df;
+    border-radius: 4px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.phone-input-group input[type="tel"] {
+    border-radius: 0 4px 4px 0;
+    border-left: none;
+    padding-right: 12px;
+}
+
+.form-group input:focus {
+    border-color: #0078d7;
+    outline: none;
+}
+
+.form-group .error {
+    color: #d93025;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.signup-btn {
+    width: 100%;
+    padding: 12px;
+    background: #0078d7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+
+.signup-btn:hover {
+    background: #005fa3;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #0078d7;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+.toggle-password-btn {
+    position: absolute;
+    top: 67%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-password-btn img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+}
+
+/* Add message styles at the end of the existing CSS */
+.message {
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center;
+    font-size: 14px;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
