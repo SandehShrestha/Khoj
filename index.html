@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Item Hunt</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <button class="toggle-btn" id="toggle-btn">☰</button>
+    <div class="app-container">
+      <!-- Static Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="logo">
+          <!-- <a href="#" id="logo-link" class="logo-link"> -->
+            Item Hunt
+            <!-- <img src="./images/itemhunt_logo.png" alt="Item Hunt Logo" class="logo-img"> -->
+          <!-- </a> -->
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <a href="#" data-page="categories" class="active">Categories</a>
+            </li>
+            <!-- <li>
+                        <a href="#" data-page="messages">Messages</a>
+                    </li> -->
+            <li>
+              <a href="#" data-page="account">Account Settings</a>
+            </li>
+            <li>
+              <a href="#" data-page="help">Help</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Dynamic Content Area -->
+      <main id="main-content">
+        <!-- Content will be loaded here dynamically -->
+      </main>
+    </div>
+
+    <script src="./js/app.js"></script>
+    <script>
+      // Load categories content by default
+      document.addEventListener("DOMContentLoaded", () => {
+        loadPageContent("categories");
+      });
+
+      // Function to load page content
+      async function loadPageContent(page) {
+        try {
+          const response = await fetch(`./${page}/content.html`);
+          const content = await response.text();
+          document.getElementById("main-content").innerHTML = content;
+
+          // Update active state in navigation
+          document.querySelectorAll(".sidebar nav a").forEach((link) => {
+            link.classList.toggle(
+              "active",
+              link.getAttribute("data-page") === page
+            );
+          });
+
+          // Load page-specific script if it exists
+          const script = document.createElement("script");
+          script.src = `./${page}/script.js`;
+          script.onload = () => {
+            if (
+              page === "categories" &&
+              typeof initCategoriesPage === "function"
+            ) {
+              initCategoriesPage();
+            } else if (
+              page === "account" &&
+              typeof initAccountPage === "function"
+            ) {
+              initAccountPage();
+            } else if (page === "help" && typeof initHelpPage === "function") {
+              initHelpPage();
+            }
+          };
+          document.body.appendChild(script);
+
+          // Load page-specific CSS if needed
+          if (page === "categories") {
+            loadCSS("./categories/styles.css");
+          } else if (page === "account") {
+            loadCSS("./account/style.css");
+          } else if (page === "help") {
+            loadCSS("./help/styles.css");
+          } else loadCSS("");
+        } catch (error) {
+          console.error("Error loading page:", error);
+        }
+      }
+
+      // Handle navigation clicks
+      document.querySelectorAll(".sidebar nav a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const page = e.target.getAttribute("data-page");
+          loadPageContent(page);
+        });
+      });
+
+      function loadCSS(href) {
+        // Remove any previously loaded page-specific CSS
+        document
+          .querySelectorAll("link[data-page-style]")
+          .forEach((link) => link.remove());
+        // Add new CSS
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = href;
+        link.setAttribute("data-page-style", "true");
+        document.head.appendChild(link);
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const logoLink = document.getElementById('logo-link');
+        if (logoLink) {
+          logoLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            loadPageContent('categories');
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
