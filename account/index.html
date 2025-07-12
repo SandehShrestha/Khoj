@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account Settings</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- This div will be used to load the content -->
+    <div id="account-content"></div>
+
+    <script src="script.js"></script>
+    <script>
+      // Load the content when the page loads
+      fetch("content.html")
+        .then((response) => response.text())
+        .then((html) => {
+          document.getElementById("account-content").innerHTML = html;
+          // Initialize any necessary scripts after content is loaded
+          if (typeof initializeAccountPage === "function") {
+            initializeAccountPage();
+          }
+        });
+    </script>
+  </body>
+</html>

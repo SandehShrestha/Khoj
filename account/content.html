@@ -1,0 +1,89 @@
+<!-- UPDATED VERSION - REMOVED PREFERENCES, DELETE ACCOUNT, AND SIGN OUT -->
+<div class="settings-wrapper">
+    <!-- Sidebar Navigation -->
+    <nav class="settings-nav">
+        <h2>Account Settings</h2>
+        <ul>
+            <li class="active" data-section="profile-info">
+                <i class="fas fa-user"></i> Profile Information
+            </li>
+            <li data-section="my-posts">
+                <i class="fas fa-list"></i> My Posts
+            </li>
+            <!-- <li data-section="profile-picture">
+                <i class="fas fa-camera"></i> Profile Picture
+            </li> -->
+            <li data-section="password">
+                <i class="fas fa-lock"></i> Password
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="settings-content">
+        <!-- Profile Information Section -->
+        <section id="profile-info" class="settings-section active">
+            <h2>Profile Information</h2>
+            <form id="profile-form" class="settings-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <button type="submit" class="btn-primary">Save Changes</button>
+            </form>
+        </section>
+        <section id="my-posts" class="settings-section">
+            <h2>My Posts</h2>
+            <div id="my-posts-feed"></div>
+        </section>
+
+        <!-- Profile Picture Section -->
+        <section id="profile-picture" class="settings-section">
+            <h2>Profile Picture</h2>
+            <div class="profile-picture-container">
+                <div class="current-picture">
+                    <img id="profile-preview" src="../images/default-avatar.png" alt="Profile Picture">
+                </div>
+                <form id="picture-form" class="settings-form">
+                    <div class="form-group">
+                        <label for="profilePicture" class="file-upload">
+                            <i class="fas fa-upload"></i> Choose New Picture
+                            <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                        </label>
+                        <small>Maximum file size: 5MB. Supported formats: JPG, PNG, GIF</small>
+                    </div>
+                    <button type="submit" class="btn-primary">Upload Picture</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Password Section -->
+        <section id="password" class="settings-section">
+            <h2>Change Password</h2>
+            <form id="password-form" class="settings-form">
+                <div class="form-group">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword" name="currentPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" name="newPassword" required>
+                    <small>Password must be at least 8 characters long</small>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm New Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                <button type="submit" class="btn-primary">Update Password</button>
+            </form>
+        </section>
+    </main>
+</div> 
