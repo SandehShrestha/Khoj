@@ -1,0 +1,77 @@
+<div class="categories-container">
+    <div class="search-bar" id="search-bar">
+        <input type="text" class="search-input" placeholder="Search item name...">
+    </div>
+
+    <div class="category-buttons">
+        <button class="category-btn active" data-category="all">All Items</button>
+        <button class="category-btn" data-category="electronic">Electronic</button>
+        <button class="category-btn" data-category="card">Card</button>
+        <button class="category-btn" data-category="cloth">Cloth</button>
+        <button class="category-btn" data-category="stationary">Stationary</button>
+        <button class="category-btn" data-category="keys">Keys</button>
+        <button class="category-btn" data-category="document">Document</button>
+    </div>
+
+    <button class="upload-btn" id="uploadBtn">
+        <i class="fas fa-plus"></i> Upload Item
+    </button>
+
+    <section id="items-display" class="items-grid">
+        <!-- Items will be dynamically loaded here -->
+    </section>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Upload Lost/Found Item</h2>
+            <form id="uploadForm">
+                <div class="form-group">
+                    <label for="itemCategory">Category:</label>
+                    <select id="itemCategory" name="category" required>
+                        <option value="electronic">Electronic</option>
+                        <option value="card">Card</option>
+                        <option value="cloth">Cloth</option>
+                        <option value="stationary">Stationary</option>
+                        <option value="keys">Keys</option>
+                        <option value="document">Document</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemName">Item Name:</label>
+                    <input type="text" id="itemName" name="itemName" required placeholder="Enter item name">
+                </div>
+
+                <div class="form-group">
+                    <label for="itemDescription">Description:</label>
+                    <textarea id="itemDescription" name="description" required placeholder="Describe the item..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemLocation">Location:</label>
+                    <input type="text" id="itemLocation" name="location" required placeholder="Where was it found/lost?">
+                </div>
+
+                <div class="form-group">
+                    <label for="itemDate">Date:</label>
+                    <input type="date" id="itemDate" name="dateFound" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemImage">Upload Image:</label>
+                    <input type="file" id="itemImage" name="image" accept="image/*" required>
+                    <div id="imagePreview" class="image-preview"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactInfo">Contact Information:</label>
+                    <input type="text" id="contactInfo" name="contactInfo" required placeholder="Your contact details">
+                </div>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+</div> 
